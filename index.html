@@ -27,7 +27,7 @@
         }
 
         function enviarFormulario(event){
-            envent.preventDefault();
+            event.preventDefault();
             alert('Horário salvo com sucesso!');
         }
 
@@ -44,15 +44,19 @@
                 textarea.value = blocoSalvo; // Restaura o valor no textarea
             }
         }
+
+        window.oninput = () => {
+            salvarValores();
+            salvarBlocoDeNotas();
+        };
 //restaura os valores quando a pagina for carregada
         window.onload = () => {
             restaurarValores();
             document.getElementById('fomularioEstudo').addEventListener('submit', enviarFormulario);
             restaurarBlocoDeNotas();
         };
-
-        window.oninput = salvarValores;//sempre que o usuário digitar algo ele salva
-        window.oninput = salvarBlocoDeNotas;
+       
+        
         
     </script>
 </head>
@@ -62,10 +66,10 @@
 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/CFGLoQIhmow?si=PHu0yQpJxC9lPW56" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-    </div>
+    </div class="horario">
         <h2>Monte seu horário e venha estudar.</h2>
         <form id="fomularioEstudo">
-            <table class= "horario" border="1">
+            <table class= "tabela" border="1">
                 <tr>
                     <th>HORÁRIO</th>
                     <th>SEGUNDA</th>
