@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rotina</title>
+    <link rel="stylesheet" href="style.css">
 
 
     <script>
-        function salvarValores(){
+        function salvarValores() {
             const inputs = document.querySelectorAll('input');
             inputs.forEach((input, index) => {
-                localStorage.setItem('input_'+ index, input.value)
+                localStorage.setItem('input_' + index, input.value)
             });
         }
 
-        
 
-        function restaurarValores(){
+
+        function restaurarValores() {
             const inputs = document.querySelectorAll('input');
-            inputs.forEach((input, index)=>{
-                const valorSalvo = localStorage.getItem('input_'+ index);
-                if(valorSalvo){
+            inputs.forEach((input, index) => {
+                const valorSalvo = localStorage.getItem('input_' + index);
+                if (valorSalvo) {
                     input.value = valorSalvo;
                 }
             });
         }
 
-        function enviarFormulario(event){
+        function enviarFormulario(event) {
             event.preventDefault();
             alert('Horário salvo com sucesso!');
         }
 
-        function salvarBlocoDeNotas(){
+        function salvarBlocoDeNotas() {
             const textarea = document.getElementById('blocoDeNotas');
             localStorage.setItem('blocoDeNotas', textarea.value);
 
@@ -49,28 +51,38 @@
             salvarValores();
             salvarBlocoDeNotas();
         };
-//restaura os valores quando a pagina for carregada
+        //restaura os valores quando a pagina for carregada
         window.onload = () => {
             restaurarValores();
             document.getElementById('fomularioEstudo').addEventListener('submit', enviarFormulario);
             restaurarBlocoDeNotas();
         };
-       
-        
-        
+
+
+
     </script>
 </head>
 <br>
-    <header>
-        <h1>STUDYFLOW</h1>
+<header>
+    <div class="navbar">
+        <a href="#music">Music</a>
+        <a href="#fomularioEstudo">Study schedule</a>
+        <a href="#tarefas">To do</a>
+        <a href="#bloco">Notes</a>
+        <a href="#footer">Contact</a>
+    </div>
+</header>
+<main>
+    <iframe id= "music" width="460" height="215" src="https://www.youtube.com/embed/CFGLoQIhmow?si=PHu0yQpJxC9lPW56"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2>Monte seu horário e venha estudar.</h2>
+    <form id="fomularioEstudo">
+        <div style="overflow-x:auto;">
 
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/CFGLoQIhmow?si=PHu0yQpJxC9lPW56" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-    </header>
-    <main>
-        <h2>Monte seu horário e venha estudar.</h2>
-        <form id="fomularioEstudo">
-            <table class= "tabela" border="1">
+        
+            <table class="tabela" border="1">
                 <tr>
                     <th>HORÁRIO</th>
                     <th>SEGUNDA</th>
@@ -80,392 +92,166 @@
                     <th>SEXTA</th>
                     <th>SÁBADO</th>
                     <th>DOMINGO</th>
-                    
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        <input type="text" placeholder="digite aqui" width="1px">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
 
                 </tr>
                 <tr>
                     <td><input type="time"></td>
                     <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
-                    
+
+                    <td>
+                        LIVRE
+                    </td>
+
+                    <td>
+                        LIVRE
+                    </td>
+
+                </tr>
+               
+                <tr>
+                    <td><input type="time"></td>
+                    <td>
+                        LIVRE
+                    </td>
+
+                    <td>
+                        LIVRE
+                    </td>
+
+                    <td>
+                        LIVRE
+                    </td>
+
+                    <td>
+                        LIVRE
+                    </td>
+
+                    <td>
+                        LIVRE
+                    </td>
+
+                    <td>
+                        LIVRE
+                    </td>
+
+                    <td>
+                        LIVRE
+                    </td>
+
                 </tr>
                 <tr>
                     <td><input type="time"></td>
                     <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
-                    
-                    
+
+                    <td>
+                        LIVRE
+                    </td>
+
+                    <td>
+                        LIVRE
+                    </td>
+
+
                 </tr>
                 <tr>
                     <td><input type="time"></td>
                     <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
 
                     <td>
-                        <input type="text" placeholder="digite aqui">
+                        LIVRE
                     </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-
-                    <td>
-                        <input type="text" placeholder="digite aqui">
-                    </td>
-                    
 
                 </tr>
-            </table>
-            <br>
-            <button type = "submit">Salvar</button>
-        </form>
+              
                 
-    
-        
-        <div class="bloco">
-            <h3>Bloco de notas:</h3>
-            <textarea id = "blocoDeNotas" rows="4" cols="50" placeholder="Digite aqui as suas notas"></textarea>
+            </table>
         </div>
-        
-        <div class="taferas">
-            <h3>Tarefas da semana:</h3>
-            <input type="checkbox">
-            <input type="text"  cols="50" placeholder="tarefa">
-            <br></br>
-            <input type="checkbox">
-            <input type="text" placeholder="tarefa">
-            <br></br>
-            <input type="checkbox">
-            <input type="text" placeholder="tarefa">
-            <br></br>
-            <input type="checkbox">
-            <input type="text" placeholder="tarefa">
-            <br></br>
-            <input type="checkbox">
-            <input type="text" placeholder="tarefa">
-            <br></br>
-            <input type="checkbox">
-            <input type="text" placeholder="tarefa">
-            <br></br>
-            <input type="checkbox">
-            <input type="text" placeholder="tarefa">
-            <br></br>
-        </div>
-    </main>
-    <footer>
+        <br>
+        <button type="submit">Salvar</button>
+    </form>
 
-    </footer>
-        
-    
+
+    <div class="taferas">
+        <h3>Tarefas da semana:</h3>
+        <input type="checkbox">
+        <textarea id="tarefa1" rows="4" cols="50" placeholder="Digite aqui as suas notas"></textarea>
+        <br></br>
+    </div>
+
+    <div class="bloco">
+        <h3>Bloco de notas:</h3>
+        <textarea id="blocoDeNotas" rows="4" cols="50" placeholder="Digite aqui as suas notas"></textarea>
+    </div>
+</main>
+<footer id="footer">
+    <p>
+        Contato:<br>
+        Email: devscaramals@gmail.com<br>
+        Instagram: @scaramals<br>
+        Github: @scaramals<br>
+        LinkedIn: <br>
+    </p>
+</footer>
+
+
 </body>
+
 </html>
