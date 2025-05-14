@@ -35,13 +35,6 @@ th, td {
 
 tr:nth-child(even) {background-color: #f2f2f2;}
 
-.tarefas{
-    width: 50%;
-}
-.bloco{
-    width: 50%;
-}
-
 main {
     background-color: #F0F0F0; /* Light Grey */
     padding: 1rem;
@@ -61,4 +54,21 @@ footer {
     color: white;
     bottom: 0;
     width: 100%;
+}
+
+.container-notas{
+  display: flex !important;
+  flex-direction: row!important;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 50%;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.tarefas, .bloco {
+  width: 48% !important;
+  box-sizing: border-box;
 }
