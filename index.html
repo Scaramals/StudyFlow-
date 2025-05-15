@@ -1,259 +1,213 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rotina</title>
-    <link rel="stylesheet" href="style.css">
-
-
-    <script>
-        function salvarValores() {
-            const inputs = document.querySelectorAll('input');
-            inputs.forEach((input, index) => {
-                localStorage.setItem('input_' + index, input.value)
-            });
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rotina</title>
+        <link rel="stylesheet" href="style.css">
 
 
-
-        function restaurarValores() {
-            const inputs = document.querySelectorAll('input');
-            inputs.forEach((input, index) => {
-                const valorSalvo = localStorage.getItem('input_' + index);
-                if (valorSalvo) {
-                    input.value = valorSalvo;
-                }
-            });
-        }
-
-        function enviarFormulario(event) {
-            event.preventDefault();
-            alert('Horário salvo com sucesso!');
-        }
-
-        function salvarBlocoDeNotas() {
-            const textarea = document.getElementById('blocoDeNotas');
-            localStorage.setItem('blocoDeNotas', textarea.value);
-
-        }
-
-        function restaurarBlocoDeNotas() {
-            const textarea = document.getElementById('blocoDeNotas'); // Seleciona o textarea
-            const blocoSalvo = localStorage.getItem('blocoDeNotas'); // Busca o valor salvo
-            if (blocoSalvo) {
-                textarea.value = blocoSalvo; // Restaura o valor no textarea
+        <script>
+            function salvarValores() {
+                const inputs = document.querySelectorAll('input');
+                inputs.forEach((input, index) => {
+                    localStorage.setItem('input_' + index, input.value)
+                });
             }
-        }
-
-        window.oninput = () => {
-            salvarValores();
-            salvarBlocoDeNotas();
-        };
-        //restaura os valores quando a pagina for carregada
-        window.onload = () => {
-            restaurarValores();
-            document.getElementById('fomularioEstudo').addEventListener('submit', enviarFormulario);
-            restaurarBlocoDeNotas();
-        };
 
 
 
-    </script>
-</head>
-<br>
-<header>
-    <div class="navbar">
-        <a href="#music">Music</a>
-        <a href="#fomularioEstudo">Study schedule</a>
-        <a href="#tarefas">To do</a>
-        <a href="#bloco">Notes</a>
-        <a href="#footer">Contact</a>
-    </div>
-</header>
-<main>
-    <iframe id= "music" width="460" height="215" src="https://www.youtube.com/embed/CFGLoQIhmow?si=PHu0yQpJxC9lPW56"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <h2>Monte seu horário e venha estudar.</h2>
-    <form id="fomularioEstudo">
-        <div style="overflow-x:auto;">
+            function restaurarValores() {
+                const inputs = document.querySelectorAll('input');
+                inputs.forEach((input, index) => {
+                    const valorSalvo = localStorage.getItem('input_' + index);
+                    if (valorSalvo) {
+                        input.value = valorSalvo;
+                    }
+                });
+            }
+
+            function enviarFormulario(event) {
+                event.preventDefault();
+                alert('Horário salvo com sucesso!');
+            }
+
+            function salvarBlocoDeNotas() {
+                const textarea = document.getElementById('blocoDeNotas');
+                localStorage.setItem('blocoDeNotas', textarea.value);
+
+            }
+
+            function restaurarBlocoDeNotas() {
+                const textarea = document.getElementById('blocoDeNotas'); // Seleciona o textarea
+                const blocoSalvo = localStorage.getItem('blocoDeNotas'); // Busca o valor salvo
+                if (blocoSalvo) {
+                    textarea.value = blocoSalvo; // Restaura o valor no textarea
+                }
+            }
+
+            window.oninput = () => {
+                salvarValores();
+                salvarBlocoDeNotas();
+            };
+            //restaura os valores quando a pagina for carregada
+            window.onload = () => {
+                restaurarValores();
+                document.getElementById('formularioEstudo').addEventListener('submit', enviarFormulario);
+                restaurarBlocoDeNotas();
+            };
+
+
 
         
-            <table class="tabela" border="1">
-                <tr>
-                    <th>HORÁRIO</th>
-                    <th>SEGUNDA</th>
-                    <th>TERÇA</th>
-                    <th>QUARTA</th>
-                    <th>QUINTA</th>
-                    <th>SEXTA</th>
-                    <th>SÁBADO</th>
-                    <th>DOMINGO</th>
+            function adicionarTarefa() {
+                const input = document.getElementById("novaTarefa");
+                const texto = input.value.trim();//removae os espaços em branco
+                //verifica se o campo está vazio
 
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        LIVRE
-                    </td>
+                if (texto !== "") {
+                const li = document.createElement("li");
 
-                    <td>
-                        LIVRE
-                    </td>
+                li.innerHTML = `
+                    <input type="checkbox">
+                    ${texto}
+                    <button class="remover" onclick="removerTarefa(this)">❌</button>
+                `;
 
-                    <td>
-                        LIVRE
-                    </td>
+                document.getElementById("listaTarefas").appendChild(li);
+                input.value = "";
+                }
+            }
 
-                    <td>
-                        LIVRE
-                    </td>
+            function removerTarefa(botao) {
+                const li = botao.parentElement;
+                li.remove();
+            }
 
-                    <td>
-                        LIVRE
-                    </td>
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
 
-                    <td>
-                        LIVRE
-                    </td>
+        </script>
 
-                    <td>
-                        LIVRE
-                    </td>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="nav-left">
+                    <a href="#music">Music</a>
+                    <a href="#formularioEstudo">Study Schedule</a>
+                </div>
 
-                </tr>
-               
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        LIVRE
-                    </td>
+                <div class="nav-center">
+                    <span class="logo">Study Flow</span>
+                </div>
 
-                    <td>
-                        LIVRE
-                    </td>
+                <div class="nav-right">
+                    <a href="#tarefas">To Do</a>
+                    <a href="#bloco">Notes</a>
+                    <a href="#footer">Contact</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <iframe id= "music" width="460" height="215" src="https://www.youtube.com/embed/CFGLoQIhmow?si=PHu0yQpJxC9lPW56"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <h2>Monte seu horário e venha estudar.</h2>
+            <form id="formularioEstudo">
+                <div style="overflow-x:auto;">
 
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-
-                </tr>
-                <tr>
-                    <td><input type="time"></td>
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                    <td>
-                        LIVRE
-                    </td>
-
-                </tr>
-              
                 
-            </table>
+                    <table class="tabela" border="1">
+                        <tr>
+                            <th>HORÁRIO</th>
+                            <th>SEGUNDA</th>
+                            <th>TERÇA</th>
+                            <th>QUARTA</th>
+                            <th>QUINTA</th>
+                            <th>SEXTA</th>
+                            <th>SÁBADO</th>
+                            <th>DOMINGO</th>
+
+                        </tr>
+                        <tr>
+                            <td><input type="time"></td>
+                            <td>
+                                LIVRE
+                            </td>
+
+                            <td>
+                                LIVRE
+                            </td>
+
+                            <td>
+                                LIVRE
+                            </td>
+
+                            <td>
+                                LIVRE
+                            </td>
+
+                            <td>
+                                LIVRE
+                            </td>
+
+                            <td>
+                                LIVRE
+                            </td>
+
+                            <td>
+                                LIVRE
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <button type="submit">Salvar</button>
+            </form>
+
+        <div class="container-notas">
+        <div class="tarefas">
+                <details class="bloco-tarefas" open>
+                    <summary>🗓️ TAREFAS DA SEMANA</summary>
+                    <div class="input-tarefa">
+                        <input type="text" id="novaTarefa" placeholder="Digite uma nova tarefa">
+                        <button onclick="adicionarTarefa()">Adicionar</button>
+                    </div>
+                    <ul id="listaTarefas">
+                        <li>
+                            <input type="checkbox">
+                                Beber água.
+                            <button class="remover" onclick="removerTarefa(this)">❌</button>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+
+            <div class="bloco">
+                <details class="bloco-notas">
+                <summary>📝 Bloco de Notas</summary>
+                <textarea id="blocoDeNotas" rows="6" cols="50" placeholder="Digite aqui as suas notas..."></textarea>
+                </details>
+            </div>
         </div>
-        <br>
-        <button type="submit">Salvar</button>
-    </form>
 
-<div class="container-notas">
-    <div class="tarefas">
-        <h3>Tarefas da semana:</h3>
-        <input type="checkbox">
-        <textarea id="tarefa1" rows="4" cols="50" placeholder="Digite aqui as suas notas"></textarea>
-    </div>
-
-    <div class="bloco">
-        <h3>Bloco de notas:</h3>
-        <textarea id="blocoDeNotas" rows="4" cols="50" placeholder="Digite aqui as suas notas"></textarea>
-    </div>
-</div>
-
-   
-</main>
-<footer id="footer">
-    <p>
-        Contato:<br>
-        Email: devscaramals@gmail.com<br>
-        Instagram: @scaramals<br>
-        Github: @scaramals<br>
-        LinkedIn: <br>
-    </p>
-</footer>
+        
+        </main>
+       <footer id="footer" class="footer">
+            <p class="footer-title">Contato</p>
+            <p>📧 Email: <a href="mailto:devscaramals@gmail.com">devscaramals@gmail.com</a></p>
+            <p>📸 Instagram: <a href="https://instagram.com/devscaramals" target="_blank">@devscaramals</a></p>
+            <p>🐙 GitHub: <a href="https://github.com/scaramals" target="_blank">@scaramals</a></p>
+            <p>💼 LinkedIn: <a href="#" target="_blank">Matheus Scaramal</a></p>
+            <button class="btn-topo" onclick="scrollToTop()">⬆️ Topo</button>
+        </footer>
 
 
-</body>
+
+    </body>
 
 </html>
