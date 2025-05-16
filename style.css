@@ -119,6 +119,7 @@ main {
   border-radius: 8px;
   border: 1px solid #aaa;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .input-tarefa button {
@@ -130,6 +131,7 @@ main {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.2s;
+  
 }
 
 .input-tarefa button:hover {
